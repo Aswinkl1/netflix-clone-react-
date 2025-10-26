@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import card_date from "../../assets/cards/Cards_data";
-const TitleCard = () => {
+const TitleCard = ({ title, category }) => {
   const cardRef = useRef();
 
   function handleEvent(e) {
@@ -11,13 +11,15 @@ const TitleCard = () => {
   useEffect(() => {
     cardRef.current.addEventListener("wheel", handleEvent);
     return () => {
-      cardRef.current.removeEventListener("wheel", handleEvent);
+      // cardRef.current.removeEventListener("wheel", handleEvent);
     };
   }, []);
 
   return (
     <div className="mt-[50px] mb-[30px]">
-      <h2 className="mb-2 text-3xl font-bold">Popular on Netflix</h2>
+      <h2 className="mb-2 text-3xl font-bold">
+        {title ? title : "Popular on Netflix"}
+      </h2>
       <div
         className="flex gap-2.5 overflow-x-scroll [&::-webkit-scrollbar]:hidden"
         ref={cardRef}

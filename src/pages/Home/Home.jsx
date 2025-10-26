@@ -45,6 +45,13 @@ const Home = () => {
           <TitleCard />
         </div>
       </div>
+
+      <div className="pl-[6%]">
+        <TitleCard title={"BlockBustor Movies"} />
+        <TitleCard title={"Only on Netflix"} />
+        <TitleCard title={"Upcoming"} />
+        <TitleCard title={"Top Pics for You"} />
+      </div>
     </div>
   );
 };
