@@ -1,5 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import card_date from "../../assets/cards/Cards_data";
+import { Link } from "react-router";
+
 const TitleCard = ({ title, category }) => {
   const cardRef = useRef();
   const [apiData, setApiData] = useState([]);
@@ -46,11 +48,13 @@ const TitleCard = ({ title, category }) => {
         {apiData.map((card, index) => {
           return (
             <div key={index} className="relative shrink-0 ">
-              <img
-                className=" cursor-pointer rounded w-80"
-                src={"https://image.tmdb.org/t/p/w500/" + card.backdrop_path}
-                alt=""
-              />
+              <Link to={`/player/${card.id}`}>
+                <img
+                  className=" cursor-pointer rounded w-80"
+                  src={"https://image.tmdb.org/t/p/w500/" + card.backdrop_path}
+                  alt=""
+                />
+              </Link>
               <p className="absolute bottom-2.5 right-2.5">
                 {card.original_title}
               </p>
