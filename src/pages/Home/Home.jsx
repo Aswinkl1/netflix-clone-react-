@@ -4,6 +4,7 @@ import hero_banner from "../../assets/hero_banner.jpg";
 import hero_title from "../../assets/hero_title.png";
 import btn_info from "../../assets/info_icon.png";
 import play_icon from "../../assets/play_icon.png";
+import TitleCard from "../../components/TitleCard/TitleCard";
 const button_for_home =
   "border-0 outline-0 gap-2.5 px-5 py-2 inline-flex items-center text-sm font-semibold  rounded cursor-pointer ";
 const Home = () => {
@@ -14,7 +15,6 @@ const Home = () => {
         <img
           src={hero_banner}
           alt=""
-          srcset=""
           className="w-full mask-[linear-gradient(to_right,transparent,black_75%)]"
         />
         <div className="absolute w-full pl-[6%] bottom-0">
@@ -42,7 +42,15 @@ const Home = () => {
               More Info
             </button>
           </div>
+          <TitleCard />
         </div>
+      </div>
+
+      <div className="pl-[6%]">
+        <TitleCard title={"BlockBustor Movies"} />
+        <TitleCard title={"Only on Netflix"} />
+        <TitleCard title={"Upcoming"} />
+        <TitleCard title={"Top Pics for You"} />
       </div>
     </div>
   );
