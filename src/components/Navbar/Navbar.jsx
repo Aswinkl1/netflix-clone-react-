@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import logo from "../../assets/logo.png";
 import search_icon from "../../assets/search_icon.svg";
 import bell_icon from "../../assets/bell_icon.svg";
@@ -20,7 +20,10 @@ const Navbar = () => {
   }, []);
 
   return (
-    <div className="w-full py-4 px-[6%] flex justify-between fixed text-sm text-neutral-200 z-10 ">
+    <div
+      ref={navRef}
+      className="w-full py-4 px-[6%] flex justify-between fixed text-sm text-neutral-200 z-10 "
+    >
       <div className="flex items-center gap-12">
         <img src={logo} alt="" className="w-[90px]" />
         <ul className="flex  gap-5  [&>li]:cursor-pointer">
