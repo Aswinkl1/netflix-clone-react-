@@ -4,8 +4,11 @@ import "./index.css";
 import App from "./App.jsx";
 import { RouterProvider } from "react-router";
 import router from "../route.js";
+import { ToastContainer } from "react-toastify";
 createRoot(document.getElementById("root")).render(
   <StrictMode>
+    <ToastContainer theme="dark" />
+
     <RouterProvider router={router} />
   </StrictMode>
 );

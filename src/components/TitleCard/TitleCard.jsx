@@ -8,7 +8,6 @@ const TitleCard = ({ title, category }) => {
 
   function handleEvent(e) {
     e.preventDefault();
-
     cardRef.current.scrollLeft += e.deltaY;
   }
 

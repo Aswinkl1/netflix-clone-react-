@@ -16,7 +16,6 @@ const route = [{
   Component:Player
 }]
 
+const router = createBrowserRouter(route);
 
-const router = createBrowserRouter(route)
-
-export default router
+export default router;

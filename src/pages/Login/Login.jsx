@@ -1,9 +1,23 @@
 import React, { useState } from "react";
 import logo from "../../assets/logo.png";
+import { login, signup } from "../../../firebase.js";
 const classForInput =
   "w-full border-0 h-12 bg-[#333] text-white my-3 rounded py-4 px-5 text-[16px] font-medium outline-0 placeholder:text-base placeholder:font-medium";
 const Login = () => {
   const [signState, setSignState] = useState("Sign In");
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const user_auth = (e) => {
+    e.preventDefault();
+    if (signState === "Sign Up") {
+      signup(email, name, password);
+    } else {
+      login(email, password);
+    }
+  };
+
   return (
     <div className="h-screen bg-[url('/background_banner.jpg')] py-5 px-[8%]">
       <img className="w-[150px]" src={logo} alt="" />
@@ -12,26 +26,39 @@ const Login = () => {
         <form>
           {signState === "Sign Up" && (
             <input
+              value={name}
+              onChange={(e) => setName(e.target.value)}
               className={classForInput}
               type="text"
               placeholder="Your name"
             />
           )}
 
-          <input className={classForInput} type="email" placeholder="Email" />
           <input
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            className={classForInput}
+            type="email"
+            placeholder="Email"
+          />
+          <input
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
             className={classForInput}
             type="password"
             name=""
-            id=""
             placeholder="password"
           />
-          <button className="w-full p-4 bg-[#e50914] text-white rounded font-medium text-sm mt-5">
+          <button
+            onClick={user_auth}
+            type="submit"
+            className="w-full p-4 bg-[#e50914] text-white rounded font-medium text-sm mt-5 cursor-pointer"
+          >
             {signState}
           </button>
           <div className="flex items-center justify-between text-[#b3b3b3] text-sm mt-3">
             <div className="flex items-center gap-1.5">
-              <input className="w-4.5 h-4.5" type="checkbox" name="" id="" />
+              <input className="w-4.5 h-4.5" type="checkbox" name="" />
               <label htmlFor="">Remember Me</label>
             </div>
             <p>Need Help?</p>

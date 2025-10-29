@@ -34,7 +34,7 @@ const Player = () => {
       <img
         src={back_arrow_icon}
         alt=""
-        onClick={() => navigate(-1)}
+        onClick={() => navigate(-2)}
         className="absolute top-5 left-5 w-12 cursor-pointer"
       />
       <iframe
