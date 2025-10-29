@@ -4,8 +4,21 @@ import search_icon from "../../assets/search_icon.svg";
 import bell_icon from "../../assets/bell_icon.svg";
 import profile_img from "../../assets/profile_img.png";
 import caret_icon from "../../assets/caret_icon.svg";
-
+import { logout } from "../../../firebase";
+import { useRef } from "react";
 const Navbar = () => {
+  const navRef = useRef();
+
+  useEffect(() => {
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 80) {
+        navRef.current?.classList.add("bg-black");
+      } else {
+        navRef.current?.classList.remove("bg-black");
+      }
+    });
+  }, []);
+
   return (
     <div className="w-full py-4 px-[6%] flex justify-between fixed text-sm text-neutral-200 z-10 ">
       <div className="flex items-center gap-12">
@@ -28,7 +41,10 @@ const Navbar = () => {
           <img src={profile_img} alt="" className="rounded w-[35px]" />
           <img src={caret_icon} alt="" className="" />
 
-          <div className="hidden group-hover:block absolute top-full right-0 w-max py-[18px] px-[22px] underline z-10 bg-[#191919]">
+          <div
+            onClick={logout}
+            className="hidden group-hover:block absolute top-full right-0 w-max py-[18px] px-[22px] underline z-10 bg-[#191919]"
+          >
             <p className="text-sm cursor-pointer">sign out Of Netflix</p>
           </div>
         </div>
