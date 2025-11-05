@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import back_arrow_icon from "../../assets/back_arrow_icon.png";
 import { useNavigate, useParams } from "react-router";
+import { useLogin } from "../../../auth";
 const Player = () => {
   const { id } = useParams();
   const navigate = useNavigate();

@@ -4,20 +4,10 @@ import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../firebase";
 import { useNavigate } from "react-router";
 import { ToastContainer, toast } from "react-toastify";
-
+import { useLogin } from "../auth";
 const App = () => {
-  const navigate = useNavigate();
-  useEffect(() => {
-    onAuthStateChanged(auth, async (user) => {
-      if (user) {
-        console.log("loged in ");
-        navigate("/");
-      } else {
-        console.log("loged out ");
-        navigate("/login");
-      }
-    });
-  }, []);
+  useLogin();
+  console.log("you know i am runnig");
   return (
     <div>
       <Home />
