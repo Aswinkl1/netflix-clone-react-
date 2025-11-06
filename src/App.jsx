@@ -6,7 +6,7 @@ import { useNavigate } from "react-router";
 import { ToastContainer, toast } from "react-toastify";
 import { useLogin } from "../auth";
 const App = () => {
-  useLogin();
+  // useLogin();
   console.log("you know i am runnig");
   return (
     <div>
