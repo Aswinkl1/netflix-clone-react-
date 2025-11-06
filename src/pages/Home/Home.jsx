@@ -6,12 +6,14 @@ import btn_info from "../../assets/info_icon.png";
 import play_icon from "../../assets/play_icon.png";
 import TitleCard from "../../components/TitleCard/TitleCard";
 import Footer from "../../components/Footer/Footer";
+import { Modal } from "../../components/Modal/Modal";
 const button_for_home =
   "border-0 outline-0 gap-2.5 px-5 py-2 inline-flex items-center text-sm font-semibold  rounded cursor-pointer ";
 const Home = () => {
   return (
     <div>
       <Navbar />
+      {/* <Modal /> */}
       <div className="relative ">
         <img
           src={hero_banner}

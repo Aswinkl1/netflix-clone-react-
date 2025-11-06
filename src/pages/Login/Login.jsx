@@ -1,24 +1,33 @@
 import React, { useState } from "react";
 import logo from "../../assets/logo.png";
 import { login, signup } from "../../../firebase.js";
+import { useLogin } from "../../../auth.jsx";
+import netflix_loding from "../../assets/netflix_spinner.gif";
 const classForInput =
   "w-full border-0 h-12 bg-[#333] text-white my-3 rounded py-4 px-5 text-[16px] font-medium outline-0 placeholder:text-base placeholder:font-medium";
 const Login = () => {
+  // useLogin();
   const [signState, setSignState] = useState("Sign In");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
+  const [loding, setLoding] = useState(false);
   const user_auth = (e) => {
     e.preventDefault();
+    setLoding(true);
     if (signState === "Sign Up") {
       signup(email, name, password);
     } else {
       login(email, password);
     }
+    setLoding(false);
   };
 
-  return (
+  return loding ? (
+    <div className="w-100 h-screen flex justify-center items-center ">
+      <img className="w-16" src={netflix_loding} alt="" srcset="" />
+    </div>
+  ) : (
     <div className="h-screen bg-[url('/background_banner.jpg')] py-5 px-[8%]">
       <img className="w-[150px]" src={logo} alt="" />
       <div className="w-full max-w-[450px] bg-black rounded p-14 m-auto">
