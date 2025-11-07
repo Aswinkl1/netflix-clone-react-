@@ -1,4 +1,4 @@
-import { Children, Component } from "react";
+import { Component } from "react";
 import App from "./src/App";
 import { createBrowserRouter } from "react-router";
 import Login from "./src/pages/Login/Login";
@@ -8,14 +8,14 @@ import RedirectIfLogedIn from "./src/components/protectedRoutes/RedirectIfLogedI
 
 const route = [
   {
-    Component: RedirectIfLogedIn,
-    children: [
-      {
-        path: "/login",
-        Component: Login,
-      },
-    ],
+    // Component: RedirectIfLogedIn,
+    // children: [
+    // {
+    path: "/login",
+    Component: Login,
   },
+  // ],
+  // },
 
   {
     Component: ProtectedRoute,

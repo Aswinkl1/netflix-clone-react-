@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import Navbar from "../../components/Navbar/Navbar";
 import hero_banner from "../../assets/hero_banner.jpg";
 import hero_title from "../../assets/hero_title.png";
@@ -7,13 +7,20 @@ import play_icon from "../../assets/play_icon.png";
 import TitleCard from "../../components/TitleCard/TitleCard";
 import Footer from "../../components/Footer/Footer";
 import { Modal } from "../../components/Modal/Modal";
+import Watchlist from "../../components/Modal/Watchlist";
+
+import { ComConetext, ComProvider } from "../../context";
+
 const button_for_home =
   "border-0 outline-0 gap-2.5 px-5 py-2 inline-flex items-center text-sm font-semibold  rounded cursor-pointer ";
 const Home = () => {
+  const { value, setValue } = useContext(ComConetext);
   return (
     <div>
       <Navbar />
       {/* <Modal /> */}
+      <Watchlist />
+
       <div className="relative ">
         <img
           src={hero_banner}
