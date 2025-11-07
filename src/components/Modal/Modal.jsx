@@ -1,10 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import { Link } from "react-router";
+import { WatchlistContext } from "../../context/WatchListContext";
 
 const Modal = ({ open = true, id = 507244, setOpen }) => {
   const [apiData, setApi] = useState("");
-  console.log(id);
+  const { watchlist, dispatch, ACTIONS } = useContext(WatchlistContext);
+
+  function handleAddToWatchlist(id) {
+    console.log(id);
+    dispatch({ type: ACTIONS.ADD, id: id });
+  }
   useEffect(() => {
     if (id == 0 || id == null) {
       return;
@@ -54,7 +60,12 @@ const Modal = ({ open = true, id = 507244, setOpen }) => {
         </Link>
         <p>{apiData.overview}</p>
         <div className="">
-          <button className="py-2 px-4 hover:bg-gray-300">
+          <button
+            className="py-2 px-4 hover:bg-gray-300"
+            onClick={() => {
+              handleAddToWatchlist(id);
+            }}
+          >
             Add to watchList
           </button>
         </div>

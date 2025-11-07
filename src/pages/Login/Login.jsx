@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useReducer, useState } from "react";
 import logo from "../../assets/logo.png";
 import { login, signup } from "../../../firebase.js";
 import { useLogin } from "../../../auth.jsx";
@@ -9,6 +9,15 @@ const Login = () => {
   // useLogin();
   const [signState, setSignState] = useState("Sign In");
   const [name, setName] = useState("");
+  function red(state, action) {
+    switch (action.type) {
+      case "change": {
+        return action.value;
+      }
+    }
+  }
+
+  // const [name, dispatch] = useReducer(red, "");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loding, setLoding] = useState(false);
