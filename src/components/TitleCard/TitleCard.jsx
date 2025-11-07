@@ -7,6 +7,7 @@ const TitleCard = ({ title, category }) => {
   const cardRef = useRef();
   const [apiData, setApiData] = useState([]);
   const [isOpen, setOpen] = useState(false);
+
   const [id, setId] = useState(0);
 
   function handleEvent(e) {
@@ -45,7 +46,8 @@ const TitleCard = ({ title, category }) => {
 
   return (
     <div className="mt-[50px] mb-[30px]">
-      isOpen && <Modal open={isOpen} id={id} setOpen={setOpen} />
+      {isOpen && <Modal open={isOpen} id={id} setOpen={setOpen} />}
+
       <h2 className="mb-2 text-3xl font-bold">
         {title ? title : "Popular on Netflix"}
       </h2>

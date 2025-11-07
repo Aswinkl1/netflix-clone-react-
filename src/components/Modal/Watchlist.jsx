@@ -21,7 +21,7 @@ async function getMovieData(id) {
 
   return res.json();
 }
-const Watchlist = () => {
+const Watchlist = ({ handleClose }) => {
   const { watchlist, dispatch, ACTIONS } = useContext(WatchlistContext);
   const [apiDate, setApiDate] = useState([]);
 
@@ -32,9 +32,13 @@ const Watchlist = () => {
       setApiDate(moveieDetails);
     })();
   }, [watchlist]);
+
   return createPortal(
     <div className="fixed flex top-0 left-0 z-40 h-screen w-screen items-center justify-center backdrop-blur-sm">
-      <div className="p-5 bg-black grid grid-cols-4 gap-5 max-h-[80vh] overflow-y-auto [&::-webkit-scrollbar]:hidden">
+      <div className="p-5  grid grid-cols-4 gap-5 max-h-[80vh] overflow-y-auto [&::-webkit-scrollbar]:hidden">
+        {watchlist.length == 0 && (
+          <div className="text-white ">watchlist is empty</div>
+        )}
         {apiDate.map((data, i) => {
           return (
             <div
@@ -72,7 +76,10 @@ const Watchlist = () => {
         })}
       </div>
 
-      <button className=" absolute right-50 top-50 py-4 px-5 rounded-3xl hover:bg-black">
+      <button
+        onClick={() => handleClose(false)}
+        className=" absolute right-50 top-50 py-4 px-5 rounded-3xl hover:bg-black"
+      >
         X
       </button>
     </div>,

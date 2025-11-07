@@ -1,12 +1,14 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import logo from "../../assets/logo.png";
 import search_icon from "../../assets/search_icon.svg";
 import bell_icon from "../../assets/bell_icon.svg";
 import profile_img from "../../assets/profile_img.png";
 import caret_icon from "../../assets/caret_icon.svg";
 import { logout } from "../../../firebase";
+import Watchlist from "../../components/Modal/Watchlist";
 
 const Navbar = () => {
+  const [watchlistOpen, setWatchlistOpen] = useState(false);
   const navRef = useRef();
 
   useEffect(() => {
@@ -24,6 +26,8 @@ const Navbar = () => {
       ref={navRef}
       className="w-full py-4 px-[6%] flex justify-between fixed text-sm text-neutral-200 z-10 "
     >
+      {watchlistOpen && <Watchlist handleClose={setWatchlistOpen} />}
+
       <div className="flex items-center gap-12">
         <img src={logo} alt="" className="w-[90px]" />
         <ul className="flex  gap-5  [&>li]:cursor-pointer">
@@ -31,7 +35,13 @@ const Navbar = () => {
           <li>Tv shows</li>
           <li>Movies</li>
           <li>New & Popular</li>
-          <li>My list</li>
+          <li
+            onClick={() => {
+              setWatchlistOpen(true);
+            }}
+          >
+            My list
+          </li>
           <li>Browse by language</li>
         </ul>
       </div>

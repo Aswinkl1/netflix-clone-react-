@@ -19,8 +19,7 @@ const Home = () => {
     <div>
       <Navbar />
       {/* <Modal /> */}
-      <Watchlist />
-
+      {/* <Watchlist /> */}
       <div className="relative ">
         <img
           src={hero_banner}
