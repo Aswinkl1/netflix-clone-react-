@@ -3,9 +3,11 @@ import logo from "../../assets/logo.png";
 import { login, signup } from "../../../firebase.js";
 import { useLogin } from "../../../auth.jsx";
 import netflix_loding from "../../assets/netflix_spinner.gif";
+import { useNavigate } from "react-router";
 const classForInput =
   "w-full border-0 h-12 bg-[#333] text-white my-3 rounded py-4 px-5 text-[16px] font-medium outline-0 placeholder:text-base placeholder:font-medium";
 const Login = () => {
+  const navigator = useNavigate();
   // useLogin();
   const [signState, setSignState] = useState("Sign In");
   const [name, setName] = useState("");
@@ -21,13 +23,15 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loding, setLoding] = useState(false);
-  const user_auth = (e) => {
+  const user_auth = async (e) => {
     e.preventDefault();
     setLoding(true);
     if (signState === "Sign Up") {
-      signup(email, name, password);
+      await signup(email, name, password);
+      navigator("/login");
     } else {
       login(email, password);
+      navigator("/");
     }
     setLoding(false);
   };

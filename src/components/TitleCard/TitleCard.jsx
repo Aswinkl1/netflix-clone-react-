@@ -27,7 +27,7 @@ const TitleCard = ({ title, category }) => {
   useEffect(() => {
     fetch(
       `https://api.themoviedb.org/3/movie/${category}?language=en-US&page=1`,
-      options
+      options,
     )
       .then((res) => res.json())
       .then((res) => setApiData(res.results))
